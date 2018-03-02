@@ -236,6 +236,7 @@ function loadRandModel(){
         url: 'https://api.fghrsh.net/live2d/'+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId,
         dataType: "json",
         success: function (result){
+		console.log(result)
             if (result.textures['id'] == 1 && (modelTexturesId == 1 || modelTexturesId == 0)) {
                 showMessage('我还没有其他衣服呢', 3000, true);
             } else {
@@ -256,6 +257,7 @@ function loadOtherModel(){
         url: 'https://api.fghrsh.net/live2d/'+modelTexturesRandMode+'/?id='+modelId,
         dataType: "json",
         success: function (result){
+		console.log(result)
             loadModel(result.model['id']);
             showMessage(result.model['message'], 3000, true);
         }
