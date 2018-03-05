@@ -122,15 +122,8 @@
 		initModel("assets/");
 		
 		var cav = document.getElementById('start');
-		var width = cav.width = window.screen.width;
-		var height = cav.height = window.screen.height;
-		
-		if(document.body.clientWidth>width){
-			width = document.body.clientWidth;
-		}
-		if(document.body.clientHeight>height){
-			height = document.body.clientHeight;
-		}
+		var width = cav.width = document.documentElement.clientWidth;
+		var height = cav.height = document.documentElement.clientHeight;
 		var letters = Array(300).join(0).split('');
 		var ctx = cav.getContext('2d');
 		var draw = function () {
