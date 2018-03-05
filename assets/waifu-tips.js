@@ -70,9 +70,9 @@ $('.waifu').on('click','.waifu-tool .fui-photo',function (){
 
 (function (){
     var text;
-    //var SiteIndexUrl = 'http://192.168.0.150:8080/live2d/demo.html';  // 手动指定主页
+    //var SiteIndexUrl = 'http://192.168.0.150:8080/live2d/index.html';  // 手动指定主页
     var SiteIndexUrl = window.location.protocol+'//'+window.location.hostname+'/';  // 自动获取主页
-    
+    consolo.log(window.location.href)
     if (window.location.href == SiteIndexUrl) {      // 如果是主页
         var now = (new Date()).getHours();
         if (now > 23 || now <= 5) {
@@ -114,7 +114,7 @@ $('.waifu').on('click','.waifu-tool .fui-photo',function (){
             text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
         }
     }
-    showMessage(text, 6000);
+    showMessage(text, 12000);
 })();
 
 window.hitokotoTimer = window.setInterval(showHitokoto,30000);
