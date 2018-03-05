@@ -39,7 +39,7 @@ $('.waifu-tool .fui-eye').click(function (){
 
 });
 
-$('.waifu-tool .fui-rope').click(function (){
+$('.waifu-tool .fui-rope').on('click',function (){
     loadOtherModel();
 });
 
