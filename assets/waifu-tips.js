@@ -30,12 +30,12 @@ $(document).on('copy', function (){
     showMessage('你都复制了些什么呀，转载要记得加上出处哦', 5000, true);
 });
 
-$('.waifu-tool .fui-home').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-home',function (){
     //window.location = 'https://www.fghrsh.net/';
     window.location = window.location.protocol+'//'+window.location.hostname+'/'
 });
 
-$('.waifu-tool .fui-eye').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-eye',function (){
 
 });
 
@@ -43,26 +43,26 @@ $('.waifu').on('click','.waifu-tool .fui-rope',function (){
     loadOtherModel();
 });
 
-$('.waifu-tool .fui-chat').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-chat',function (){
     showHitokoto();
 });
 
-$('.waifu-tool .fui-user').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-user',function (){
     loadRandModel();
 });
 
-$('.waifu-tool .fui-info-circle').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-info-circle',function (){
     window.open('https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02');
     //window.open('https://www.fghrsh.net/post/123.html');
 });
 
-$('.waifu-tool .fui-cross').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-cross',function (){
     sessionStorage.setItem('waifu-dsiplay', 'none');
     showMessage('愿你有一天能与重要的人重逢', 1300, true);
     window.setTimeout(function() {$('.waifu').hide();}, 1300);
 });
 
-$('.waifu-tool .fui-photo').click(function (){
+$('.waifu').on('click','.waifu-tool .fui-photo',function (){
     showMessage('照好了嘛，是不是很可爱呢？', 5000, true);
     window.Live2D.captureName = 'Pio.png';
     window.Live2D.captureFrame = true;
@@ -181,7 +181,7 @@ function initModel(waifuPath){
         
     } loadModel(modelId, modelTexturesId);
 	
-	console.log("waifu-tips.json : waifuPath = " + waifuPath + " modelId=" + modelId + " modelTexturesId="+modelTexturesId)
+	console.log("waifuPath = " + waifuPath + 'waifu-tips.json modelId=' + modelId)
 	$.ajax({
         cache: true,
         url: waifuPath+'waifu-tips.json',
@@ -222,7 +222,7 @@ function initModel(waifuPath){
 
 function loadModel(modelId, modelTexturesId){
     localStorage.setItem('modelId', modelId);
-    if (modelTexturesId === undefined || modelTexturesId == 0){
+    if (modelTexturesId === undefined||modelTexturesId == 0){
 		if(modelId==1){
 			modelTexturesId = Math.floor(Math.random()*(87+1));
 		}else if(modelId==2){
