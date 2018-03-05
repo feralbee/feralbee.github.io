@@ -56,7 +56,7 @@ $('.waifu').on('click','.waifu-tool .fui-info-circle',function (){
     //window.open('https://www.fghrsh.net/post/123.html');
 });
 
-$('.waifu').on('click','.waifu-tool .fui-cross',function (){
+$('.waifu').on('click','.waifu-tool .fui-out',function (){
     sessionStorage.setItem('waifu-dsiplay', 'none');
     showMessage('愿你有一天能与重要的人重逢', 1300, true);
     window.setTimeout(function() {$('.waifu').hide();}, 1300);
