@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-ecavuiv="Content-Type" content="text/html; charset=gb2312" />
+    <link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
+    <script src="js/jquery.min.js"></script>
+<title>xx</title>
+        <style>
+		html body{overflow:hidden;}
+		#start {
+			position: absolute;
+			top:0;
+			z-index:1000;
+		}
+		#wrapper{
+			position: relative;
+			width:200px;
+			height:100px;
+			border:1px solid darkgray;
+		}
+		#progressbar{
+			position: absolute;
+			top:50%;
+			left:50%;
+			margin-left:-190px;
+			margin-top:100px;
+			width:380px;
+			height:30px;
+			z-index:1001;
+		}
+		#progressbar-font {
+			padding-top:10px;
+			animation: change 1s ease-in infinite;
+			font:14px;
+			color:#0f0;
+			text-align:center;
+		}
+		/*在进度条元素上调用动画*/
+		#fill{
+			animation: move 5s;
+			text-align: center;
+			background-color: #0f0;
+			height:10px;
+		}
+		/*实现元素宽度的过渡动画效果*/
+		@keyframes move {
+			0%{
+				width:0;
+
+			}
+			100%{
+				width:100%;
+			}
+		}
+		@keyframes change {  
+            0%{opacity:1;}  
+            25%{opacity:0.5;} 
+            50%{opacity:0;}   
+            75%{opacity:0.5;}   
+            100%{opacity:1;}    
+        } 
+		</style>
+</head>
+<body>
+    <!--进度条容器-->
+    <div id="progressbar">
+        <!--用来模仿进度条推进效果的进度条元素-->
+        <div id="fill"></div>
+		<div id="progressbar-font">
+			 loading...
+		</div>
+    </div>
+	
+	<canvas id="start"></canvas>
+
+    <div class="waifu">
+    </div>
+        
+    <script src="assets/waifu-tips.js"></script>
+    <script src="assets/live2d.js"></script>
+	<script type="text/javascript" >
+	$(function(){
+		var cav = document.getElementById('start');
+		var width = cav.width = window.screen.width;
+		var height = cav.height = window.screen.height;
+		var letters = Array(300).join(0).split('');
+		var ctx = cav.getContext('2d');
+		var draw = function () {
+		  ctx.fillStyle = 'rgba(0,0,0,.05)';
+		  ctx.fillRect(0,0,width,height);
+		  ctx.fillStyle = '#0F0';
+		  ctx.font = '20px 宋体';
+		  letters.map(function(y_pos, index){
+			text = String.fromCharCode(1e2+Math.random()*330);
+			x_pos = index * 10;
+			ctx.fillText(text, x_pos, y_pos);
+			letters[index] = (y_pos > Math.random() * 1e4) ? 0 : y_pos + 10;
+		  });
+		};
+		setInterval(draw, 20);
+		setTimeout(function(){
+			$("#fill").hide();
+			$("#progressbar-font").text("success");
+		},5000);
+		
+		setTimeout(function(){
+			$("#start").hide();
+			$("#progressbar").remove();
+			$("#content").show();
+			loadWaifu();
+			initModel("assets/");
+		},6000);
+		
+	});
+	
+	function loadWaifu(){
+		var html="";
+		html+="<div class=\"waifu-tips\"></div>";
+        html+="<canvas id=\"live2d\" width=\"280\" height=\"250\" class=\"live2d\"></canvas>";
+        html+="<div class=\"waifu-tool\">";
+            html+="<span class=\"fui-home\"></span>";
+            html+="<span class=\"fui-chat\"></span>";
+            html+="<span class=\"fui-eye\"></span>";
+            html+="<span class=\"fui-rope\"></span>";
+            html+="<span class=\"fui-user\"></span>";
+            html+="<span class=\"fui-photo\"></span>";
+            html+="<span class=\"fui-info-circle\"></span>";
+            html+="<span class=\"fui-out\"></span>";
+        html+="</div>";
+		$(".waifu").html(html);
+	}
+	</script>
+</body>
+</html>
