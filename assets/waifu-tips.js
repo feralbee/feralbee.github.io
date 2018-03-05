@@ -114,7 +114,7 @@ $('.waifu').on('click','.waifu-tool .fui-photo',function (){
             text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
         }
     }
-    showMessage(text, 12000);
+    showMessage(text, 15000);
 })();
 
 window.hitokotoTimer = window.setInterval(showHitokoto,30000);
