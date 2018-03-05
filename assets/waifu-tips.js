@@ -222,7 +222,7 @@ function initModel(waifuPath){
 
 function loadModel(modelId, modelTexturesId){
     localStorage.setItem('modelId', modelId);
-    if (modelTexturesId === undefined){
+    if (modelTexturesId === undefined || modelTexturesId === 0){
 		if(modelId==1){
 			modelTexturesId = Math.floor(Math.random()*(87+1));
 		}else if(modelId==2){
