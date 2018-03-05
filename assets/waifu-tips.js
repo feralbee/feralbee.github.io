@@ -181,7 +181,7 @@ function initModel(waifuPath){
         
     } loadModel(modelId, modelTexturesId);
 	
-	console.log("waifuPath = " + waifuPath + 'waifu-tips.json modelId=' + modelId)
+	console.log("waifu-tips.json : waifuPath = " + waifuPath + " modelId=" + modelId + " modelTexturesId="+modelTexturesId)
 	$.ajax({
         cache: true,
         url: waifuPath+'waifu-tips.json',
