@@ -122,6 +122,8 @@
     <script src="assets/live2d.js"></script>
 	<script type="text/javascript" >
 	$(function(){
+		initModel("assets/");
+		
 		var cav = document.getElementById('start');
 		var width = cav.width = window.screen.width;
 		var height = cav.height = window.screen.height;
@@ -151,18 +153,16 @@
 			$("#progressbar").remove();
 		},6000);
 		
-		initModel("assets/");
-		
 		window.paceOptions = {
-	 　　　　ajax: true,
-	 　　　　eventLag: false,
-	 　　　　elements: false
-　　	}
+	 　　　　	ajax: true,
+	 　　　　	eventLag: false,
+	 　　　	 elements: false
+　　	       }
 		window.paceOptions = {
-	　　　　ajax: {
-	　　　　　　trackMethods: ['GET', 'POST']
-	　　　　}
-	　　}
+	　　　　	ajax: {
+	　　　　	　　trackMethods: ['GET', 'POST']
+	　　　　	}
+	　　     }
 	});
 	</script>
 </body>
