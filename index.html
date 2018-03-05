@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-ecavuiv="Content-Type" content="text/html; charset=gb2312" />
-	
   <script src="js/pace/pace.js"></script>
-  <link href="js/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" />
+<link href="js/pace/themes/pace-theme-barber-shop.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/pace.css"/>
     <link rel="stylesheet" type="text/css" href="assets/waifu.css"/>
     <script src="js/jquery.min.js"></script>
 <title>xx</title>
@@ -12,9 +12,26 @@
 		html body{overflow:hidden;}
 		#start {
 			position: absolute;
-			top:0;
 			left:0;
+			top:0;
 			z-index:1000;
+		}
+		#cover {
+			position: absolute;
+			background:#000;
+			height:100%;
+			width:100%;
+			left:0;
+			top:0;
+			z-index:999;
+		}
+		#content {
+			position: absolute;
+			height:100%;
+			width:100%;
+			left:0;
+			top:0;
+			z-index:0;
 		}
 		#wrapper{
 			position: relative;
@@ -66,6 +83,10 @@
 		</style>
 </head>
 <body>
+    <!--遮盖层-->
+    <div id="cover">
+	</div>
+	
     <!--进度条容器-->
     <div id="progressbar">
         <!--用来模仿进度条推进效果的进度条元素-->
@@ -75,10 +96,27 @@
 		</div>
     </div>
 	
+    <!--加载动画-->
 	<canvas id="start"></canvas>
+	
+    <!--内容-->
+    <div id="content">
+		<div id="waifu" class="waifu">
+			<div class="waifu-tips"></div>
+			<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+			<div class="waifu-tool">
+				<span class="fui-home"></span>
+				<span class="fui-chat"></span>
+				<span class="fui-eye"></span>
+				<span class="fui-rope"></span>
+				<span class="fui-user"></span>
+				<span class="fui-photo"></span>
+				<span class="fui-info-circle"></span>
+				<span class="fui-out"></span>
+			</div>
+		</div>
+	</div>
 
-    <div class="waifu">
-    </div>
         
     <script src="assets/waifu-tips.js"></script>
     <script src="assets/live2d.js"></script>
@@ -109,30 +147,23 @@
 		
 		setTimeout(function(){
 			$("#start").hide();
+			$("#cover").hide();
 			$("#progressbar").remove();
-			$("#content").show();
-			loadWaifu();
-			initModel("assets/");
 		},6000);
 		
+		initModel("assets/");
+		
+		window.paceOptions = {
+	 　　　　ajax: true,
+	 　　　　eventLag: false,
+	 　　　　elements: false
+　　	}
+		window.paceOptions = {
+	　　　　ajax: {
+	　　　　　　trackMethods: ['GET', 'POST']
+	　　　　}
+	　　}
 	});
-	
-	function loadWaifu(){
-		var html="";
-		html+="<div class=\"waifu-tips\"></div>";
-        html+="<canvas id=\"live2d\" width=\"280\" height=\"250\" class=\"live2d\"></canvas>";
-        html+="<div class=\"waifu-tool\">";
-            html+="<span class=\"fui-home\"></span>";
-            html+="<span class=\"fui-chat\"></span>";
-            html+="<span class=\"fui-eye\"></span>";
-            html+="<span class=\"fui-rope\"></span>";
-            html+="<span class=\"fui-user\"></span>";
-            html+="<span class=\"fui-photo\"></span>";
-            html+="<span class=\"fui-info-circle\"></span>";
-            html+="<span class=\"fui-out\"></span>";
-        html+="</div>";
-		$(".waifu").html(html);
-	}
 	</script>
 </body>
 </html>
